@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import Stock from '../components/Stock'
+import StockContainer from './StockContainer';
 
 class PortfolioContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div >
         <h2>My Portfolio</h2>
           {
-            //render your portfolio stocks here
+            this.props.stocks.map( stock => {
+              return < Stock onClick={() => {this.props.sellStock(this.props.stock)}} key={stock.id} stock={stock}/>
+            })
           }
       </div>
     );
